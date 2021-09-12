@@ -44,4 +44,12 @@ public class ServiceService {
     return serviceRepository.findById(id)
       .orElseThrow(() -> new NotFoundException("Service with given id not found: " + id));
   }
+
+  public ServiceMetadata update(String id, ServiceMetadata serviceMetadata, String remoteAddr) {
+    ServiceMetadata serviceMetadataForUpdate = findById(id);
+    serviceMetadataForUpdate.setAddress(remoteAddr);
+    serviceMetadataForUpdate.setDescription(serviceMetadata.getDescription());
+    serviceMetadataForUpdate.setPort(serviceMetadata.getPort());
+    return serviceRepository.save(serviceMetadataForUpdate);
+  }
 }
