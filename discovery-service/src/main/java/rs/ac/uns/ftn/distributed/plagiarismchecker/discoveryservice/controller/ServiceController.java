@@ -23,7 +23,7 @@ public class ServiceController {
     return ResponseEntity.ok(serviceService.findById(id));
   }
 
-  @PutMapping(produces = APPLICATION_JSON_VALUE)
+  @PutMapping(consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
   public ResponseEntity<ServiceMetadata> update(@PathVariable String id, HttpServletRequest servletRequest,
       @RequestBody ServiceMetadata serviceMetadata) {
     return ResponseEntity.ok(serviceService.update(id, serviceMetadata, servletRequest.getRemoteAddr()));
