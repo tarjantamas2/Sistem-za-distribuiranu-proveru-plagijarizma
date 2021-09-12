@@ -1,0 +1,26 @@
+package rs.ac.uns.ftn.distributed.plagiarismchecker.discoveryservice.controller;
+
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import lombok.RequiredArgsConstructor;
+import rs.ac.uns.ftn.distributed.plagiarismchecker.discoveryservice.entity.ServiceMetadata;
+import rs.ac.uns.ftn.distributed.plagiarismchecker.discoveryservice.service.ServiceService;
+
+@RestController
+@RequiredArgsConstructor
+@RequestMapping("/api/v1/service/{id}")
+public class ServiceController {
+
+  private final ServiceService serviceService;
+
+  @GetMapping(produces = APPLICATION_JSON_VALUE)
+  public ResponseEntity<ServiceMetadata> findById(@PathVariable String id) {
+    return ResponseEntity.ok(serviceService.findById(id));
+  }
+}

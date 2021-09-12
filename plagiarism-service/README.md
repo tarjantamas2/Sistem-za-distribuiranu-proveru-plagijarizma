@@ -1,0 +1,1 @@
+# Example implementation of a system node

@@ -1,0 +1,25 @@
+server:
+  port: 8500
+
+spring:
+  data:
+    mongodb:
+      username: root
+      password: password
+      authentication-database: admin
+      database: service-db
+  servlet:
+    multipart:
+      max-file-size: 3000MB
+      max-request-size: 3000MB
+ftn:
+  discovery:
+    services-endpoint: http://localhost:8500/api/v1/services
+    service-endpoint: http://localhost:8500/api/v1/service
+  shared:
+    login: http://localhost:8502/login
+    user: http://localhost:8502/api/v1/user
+    users: http://localhost:8502/api/v1/users
+    task: http://localhost:8502/api/v1/shared-task
+    tasks: http://localhost:8502/api/v1/shared-tasks
+    services: http://localhost:8502/api/v1/services
