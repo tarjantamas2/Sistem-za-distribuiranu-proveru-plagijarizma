@@ -28,4 +28,10 @@ public class ServiceController {
       @RequestBody ServiceMetadata serviceMetadata) {
     return ResponseEntity.ok(serviceService.update(id, serviceMetadata, servletRequest.getRemoteAddr()));
   }
+
+  @DeleteMapping
+  public ResponseEntity<ServiceMetadata> delete(@PathVariable String id) {
+    serviceService.delete(id);
+    return ResponseEntity.noContent().build();
+  }
 }

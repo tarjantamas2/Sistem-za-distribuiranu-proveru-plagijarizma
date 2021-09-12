@@ -52,4 +52,9 @@ public class ServiceService {
     serviceMetadataForUpdate.setPort(serviceMetadata.getPort());
     return serviceRepository.save(serviceMetadataForUpdate);
   }
+
+  public void delete(String id) {
+    ServiceMetadata metadata = findById(id);
+    serviceRepository.delete(metadata);
+  }
 }
